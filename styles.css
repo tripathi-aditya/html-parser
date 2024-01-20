@@ -1,0 +1,68 @@
+@import url("globals.css");
+
+.board {
+    align-items: center;
+    /* border: 2px solid purple; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10rem;
+   
+}
+
+.cell {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vw;
+    width: 30vw;
+    font-size: 6rem;
+}
+
+.cell_first {
+    border-bottom: 0.4rem solid black; 
+    border-right: 0.4rem solid black; 
+}
+
+.cell_second {
+    border-bottom: 0.4rem solid black; 
+    border-right: 0.4rem solid black; 
+}
+.cell_third {
+    border-bottom: 0.4rem solid black; 
+}
+.cell_fourth {
+    border-right: 0.4rem solid black; 
+    border-bottom: 0.4rem solid black; 
+}
+.cell_fifth {
+    border-right: 0.4rem solid black; 
+    border-bottom: 0.4rem solid black; 
+}
+.cell_sixth {
+    border-bottom: 0.4rem solid black; 
+}
+.cell_seventh {
+    border-right: 0.4rem solid black; 
+}
+.cell_eigth {
+    border-right: 0.4rem solid black; 
+}
+.cell_ninth {
+}
+
+.scores-and-turn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--padding-md);
+}
+
+.turn {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+

@@ -2,7 +2,6 @@
 
 .board {
     align-items: center;
-    /* border: 2px solid purple; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

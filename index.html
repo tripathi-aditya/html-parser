@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="global-vars">
 <head>
-    <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="styles.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <header>
-        <span>Link to site</span>
-        <span>Settings</span>
+    <header class="logo">
+        <span class="heading">Link to site</span>
     </header>
+    <aside class="settings">
+        <span>Play with AI</span>
+        <span>Sound on/off</span>
+        <span>Dark them on/off</span>
+
+    </aside>
     <main>
         <div class="board">
                 <div class="cell cell_first">
@@ -42,18 +46,16 @@
                     X
                 </div>
         </div>
-        <section class="scores-and-turn">
-            <div class="turn">
-                <span class="player_turn">
-                    Player
+        <section class="scores-and-turn">   
+                <span >
+                    Player 1
                 </span>
-                <span class="computer_turn">
-                    Computer
+                <span>
+                    Draw
                 </span>
-            </div>
-            <div class="scores">
-                Use session storage
-            </div>
+                <span>
+                    player 2
+                </span>
         </section>
     </main>
     <footer>

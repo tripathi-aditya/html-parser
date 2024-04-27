@@ -1,12 +1,23 @@
-:root {
+
+
+.global-vars {
     --padding-sm: 1rem;
     --padding-md: 2rem;
     --padding-lg: 3rem;
 
     --margin-sm: 1rem;
     --margin-md: 2rem;
-    --margin-lg: 3rem;
+    --margin-lg: 4rem;
+
+    --font-size-sm: 16px;
+    --font-size-md: 24px;
+    --font-size-lg: 32px;
 }
+
+:root {
+    font-size: var(--font-size-sm);
+}
+
 
 
 body {
@@ -20,11 +31,6 @@ body {
     width: 100vw;
 }
 
-header {
-    padding: var(--padding-sm);
-    display: flex;
-    justify-content: space-between;
-}
 
 footer {
     display: flex;
@@ -32,4 +38,19 @@ footer {
     align-items: center;
     margin-top: auto;
     padding: var(--padding-sm);
+}
+
+
+/* Medium devices, land scape tablets, large phones */
+@media only screen and (min-width: 768px) {
+    :root {
+        font-size: var(--font-size-md);
+    }
+}
+
+/* Large and X-Large devices */
+@media only screen and (min-width: 992px) {
+    :root {
+        font-size: var(--font-size-lg);
+    }
 }

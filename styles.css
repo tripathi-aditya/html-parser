@@ -1,12 +1,32 @@
 @import url("globals.css");
 @import url("typography.css");
 
+
+main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 2px solid green;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    padding: var(--padding-sm);
+}
+
+
 .board {
     display: grid;
-    margin-top: var(--margin-lg);
-    padding: var(--padding-sm);
-    grid-template-rows: repeat(3, minmax(6rem, 30vw));
+    margin: 0 auto;
+    grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
+    width: 85vw;
+    height: 85vw;
 
    
     .cell {
@@ -14,7 +34,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 6rem;
     }
 
     .cell_first {
@@ -74,6 +93,7 @@
     display: flex;
     justify-content: center;
     padding: var(--padding-sm);
+    margin-top: 0;
 }
 
 .settings {
@@ -89,9 +109,32 @@
     padding: var(--padding-md);
 }
 
-.turn {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
+/* Large phones, small tablets */
+@media only screen and (min-width: 570px) {
+    .board {
+        width: 70vw;
+        height: 70vw;
+    }
 }
 
+
+
+/* Medium devices, land scape tablets, large phones */
+@media only screen and (min-width: 768px) {
+    .board {
+        width: 55vw;
+        height: 55vw;
+    }
+}
+
+/* Large and X-Large devices */
+@media only screen and (min-width: 992px) {
+    .logo-settings-wrapper{
+        display: flex;
+        justify-content: space-between;
+    }
+    .board {
+        width: 50vh;
+        height: 50vh;
+    }
+}

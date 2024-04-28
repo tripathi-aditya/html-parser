@@ -32,16 +32,15 @@ body {
 }
 
 
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: auto;
-    padding: var(--padding-sm);
+/* Large phones, small tablets */
+@media only screen and (min-width: 570px) {
+    :root {
+        font-size: var(--font-size-md);
+    }
 }
 
 
-/* Medium devices, land scape tablets, large phones */
+/* Medium devices, land scape tablets */
 @media only screen and (min-width: 768px) {
     :root {
         font-size: var(--font-size-md);

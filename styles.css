@@ -8,7 +8,6 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border: 2px solid green;
 }
 
 footer {
@@ -99,6 +98,12 @@ footer {
 .settings {
     display: flex;
     justify-content: space-evenly;
+    padding: var(--padding-md);
+}
+
+.setting-toggle {
+    width: fit-content;
+    padding:  var(--padding-xs);
 }
 
 
@@ -107,6 +112,12 @@ footer {
     justify-content: space-evenly;
     align-items: center;
     padding: var(--padding-md);
+}
+
+.scores {
+    border: 0.1rem solid;
+    border-radius: 1rem;
+    padding: var(--padding-sm);
 }
 
 /* Large phones, small tablets */

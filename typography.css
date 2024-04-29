@@ -1,16 +1,16 @@
 
 .heading {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
 }
 
 .sub-heading {
-    font-size: 1.8rem;
-}
-
-.text {
     font-size: 1.2rem;
 }
 
+.text {
+    font-size: 1rem;
+}
+
 .sub-text{
-    font-size: 0.8rem;
+    font-size: 0.5rem;
 }

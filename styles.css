@@ -35,53 +35,53 @@ footer {
         align-items: center;
     }
 
-    .cell_first {
+    .cell_zero {
         grid-column: 1/2;
         grid-row: 1/2;
         border-bottom: 0.4rem solid black; 
         border-right: 0.4rem solid black; 
     }
     
-    .cell_second {
+    .cell_first {
         grid-column: 2/3;
         grid-row: 1/2;
         border-bottom: 0.4rem solid black; 
         border-right: 0.4rem solid black;
     }
-    .cell_third {
+    .cell_second {
         grid-column: 3/4;
         grid-row: 1/2;
         border-bottom: 0.4rem solid black; 
     }
-    .cell_fourth {
+    .cell_third {
         grid-column: 1/2;
         grid-row: 2/3;
         border-right: 0.4rem solid black; 
         border-bottom: 0.4rem solid black; 
     }
-    .cell_fifth {
+    .cell_fourth {
         grid-column: 2/3;
         grid-row: 2/3;
         border-right: 0.4rem solid black; 
         border-bottom: 0.4rem solid black; 
 
     }
-    .cell_sixth {
+    .cell_fifth {
         grid-column: 3/4;
         grid-row: 2/3;
         border-bottom: 0.4rem solid black; 
     }
-    .cell_seventh {
+    .cell_sixth {
         grid-column: 1/2;
         grid-row: 3/4;
         border-right: 0.4rem solid black; 
     }
-    .cell_eigth {
+    .cell_seventh {
         grid-column: 2/3;
         grid-row: 3/4;
         border-right: 0.4rem solid black; 
     }
-    .cell_ninth {
+    .cell_eigth {
         grid-column: 3/4;
         grid-row: 3/4;
     }

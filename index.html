@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" ></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
@@ -25,43 +26,43 @@
 </aside>
     <main>
         <div class="board">
-                <div class="cell cell_first">
+                <div data-cell-id="0" class="cell cell_zero">
+                
+                </div>
+                <div data-cell-id="1" class="cell cell_first">
                     
                 </div>
-                <div class="cell cell_second">
+                <div data-cell-id="2" class="cell cell_second">
                     
                 </div>
-                <div class="cell cell_third">
+                <div data-cell-id="3" class="cell cell_third">
                     
                 </div>
-                <div class="cell cell_fourth">
+                <div data-cell-id="4" class="cell cell_fourth">
+           
+                </div>
+                <div data-cell-id="5" class="cell cell_fifth">
                     
                 </div>
-                <div class="cell cell_fifth">
+                <div data-cell-id="6" class="cell cell_sixth">
                     
                 </div>
-                <div class="cell cell_sixth">
+                <div data-cell-id="7" class="cell cell_seventh">
                     
                 </div>
-                <div class="cell cell_seventh">
-                    
-                </div>
-                <div class="cell cell_eigth">
-                    
-                </div>
-                <div class="cell cell_ninth">
+                <div data-cell-id="8" class="cell cell_eigth">
                     
                 </div>
         </div>
         <section class="scores-and-turn">   
-                <span class="scores">
-                    Player 1
+                <span data-result="X" class="scores">
+                    Player X
                 </span>
                 <span class="scores">
                     Draw
                 </span>
-                <span class="scores">
-                    player 2
+                <span data-result="O" class="scores">
+                    player O
                 </span>
         </section>
     </main>

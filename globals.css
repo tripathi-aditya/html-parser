@@ -17,6 +17,8 @@
 
 :root {
     font-size: var(--font-size-sm);
+    font-family: "Jersey 15", sans-serif;
+    font-weight: 400;
 }
 
 

@@ -15,6 +15,27 @@
     --font-size-lg: 24px;
 }
 
+.dark-theme {
+    --background: #1b1b1e;
+    --background-highlight: #000000;
+    --content-highlight: #3f3f3f;
+    --font-color-primary: #ffffff;
+    --font-color-secondary: #828282;
+    --contrast-primary: #a688fa;
+    --contrast-secondary: #2d2348;
+}
+
+.light-theme {
+    --background: #f4f4f6;
+    --background-highlight: #f4f4f6;
+    --content-highlight: #9999a1;
+    --font-color-primary: #201934;
+    --font-color-secondary: #9999A1;
+    --contrast-primary: #8c62ff;
+    --contrast-secondary: #cab6ff;
+
+}
+
 :root {
     font-size: var(--font-size-sm);
     font-family: "Jersey 15", sans-serif;
@@ -32,6 +53,14 @@ body {
     margin: 0;
     padding: 0;
     width: 100vw;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--background);
+    color: var(--font-color-primary);
+}
+
+
+p {
+    margin: 0.2rem;
 }
 
 

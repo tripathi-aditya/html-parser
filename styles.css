@@ -24,8 +24,10 @@ footer {
     margin: 0 auto;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
-    width: 85vw;
-    height: 85vw;
+    width: 80vw;
+    height: 80vw;
+    transition: all 0.3s ease-in-out;
+    
 
    
     .cell {
@@ -33,57 +35,71 @@ footer {
         display: flex;
         justify-content: center;
         align-items: center;
+        border: 0.4rem solid;
+        border-color: var(--contrast-secondary);
+        font-size: 3rem;
     }
 
     .cell_zero {
         grid-column: 1/2;
         grid-row: 1/2;
-        border-bottom: 0.4rem solid black; 
-        border-right: 0.4rem solid black; 
+        border: none;
+        border-bottom: 0.4rem solid; 
+        border-right: 0.4rem solid; 
     }
     
     .cell_first {
         grid-column: 2/3;
         grid-row: 1/2;
-        border-bottom: 0.4rem solid black; 
-        border-right: 0.4rem solid black;
+        border-top: none;
+        border-bottom: 0.4rem solid; 
+        border-right: 0.4rem solid;
     }
     .cell_second {
         grid-column: 3/4;
         grid-row: 1/2;
-        border-bottom: 0.4rem solid black; 
+        border-top: none;
+        border-right: none;
+        border-bottom: 0.4rem solid; 
     }
     .cell_third {
         grid-column: 1/2;
         grid-row: 2/3;
-        border-right: 0.4rem solid black; 
-        border-bottom: 0.4rem solid black; 
+        border-left: none;
+        border-right: 0.4rem solid; 
+        border-bottom: 0.4rem solid; 
     }
     .cell_fourth {
         grid-column: 2/3;
         grid-row: 2/3;
-        border-right: 0.4rem solid black; 
-        border-bottom: 0.4rem solid black; 
+        border-right: 0.4rem solid; 
+        border-bottom: 0.4rem solid; 
 
     }
     .cell_fifth {
         grid-column: 3/4;
         grid-row: 2/3;
-        border-bottom: 0.4rem solid black; 
+        border-right: none;
+        border-bottom: 0.4rem solid; 
     }
     .cell_sixth {
         grid-column: 1/2;
         grid-row: 3/4;
-        border-right: 0.4rem solid black; 
+        border-left: none;
+        border-bottom: none;
+        border-right: 0.4rem solid; 
     }
     .cell_seventh {
         grid-column: 2/3;
         grid-row: 3/4;
-        border-right: 0.4rem solid black; 
+        border-bottom: none;
+        border-right: 0.4rem solid; 
     }
     .cell_eigth {
         grid-column: 3/4;
         grid-row: 3/4;
+        border-right: none;
+        border-bottom: none;
     }
 }
 
@@ -99,11 +115,25 @@ footer {
     display: flex;
     justify-content: space-evenly;
     padding: var(--padding-md);
+  
 }
 
 .setting-toggle {
-    width: fit-content;
+    border-radius: 0.25rem;
     padding:  var(--padding-xs);
+    width: fit-content;
+    background-color: var(--contrast-primary);
+    font-family: inherit;
+    transition: all 0.1s ease-in;
+    font-size: inherit;
+    box-shadow: 0.2rem 0.1rem  var(--font-color-primary);
+
+    &:hover{
+        cursor: pointer;
+        background-color: var(--contrast-secondary);
+        color: var(--font-color-primary);
+        box-shadow:none;
+    }
 }
 
 
@@ -111,20 +141,43 @@ footer {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding: var(--padding-md);
+    padding: var(--padding-sm);
+    font-size: 2rem;
+    color: var(--font-color-secondary);
+    margin: auto;
 }
 
 .scores {
-    border: 0.1rem solid;
-    border-radius: 1rem;
-    padding: var(--padding-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 var(--padding-sm);
+  
 }
+
+
+.current-turn {
+    color: var(--contrast-primary);
+}
+
+
+.board-message {
+    padding: var(--margin-md);
+    margin: auto;
+    color: var(--contrast-primary);
+    /* stop jumping */
+    min-height: 1rem;  
+}
+
+
 
 /* Large phones, small tablets */
 @media only screen and (min-width: 570px) {
     .board {
-        width: 70vw;
-        height: 70vw;
+        width: 50vw;
+        height: 50vw;
     }
 }
 
@@ -133,8 +186,8 @@ footer {
 /* Medium devices, land scape tablets, large phones */
 @media only screen and (min-width: 768px) {
     .board {
-        width: 55vw;
-        height: 55vw;
+        width: 40vw;
+        height: 40vw;
     }
 }
 

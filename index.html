@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" class="global-vars">
+<html lang="en"  class="global-vars">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
-
+    
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer ></script>
+    <script src="/scripts/board.js" defer ></script>
+    <script src="/scripts/settings.js" defer ></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
@@ -14,13 +15,13 @@
 <body>
     <aside class="logo-settings-wrapper">
     <header class="logo">
-        <span class="heading">Link to site</span>
+        <span class="heading">at</span>
     </header>
     <section class="settings">
-        <button class="setting-toggle">Play with AI</button>
+        <button class="setting-toggle" >Play with AI</button>
         <button class="setting-toggle">Sound on/off</button>
-        <button class="setting-toggle">Dark them on/off</button>
-
+        <!-- made as checkbox for accessibility -->
+        <button id="toggle-theme" class="setting-toggle">Dark them on/off</button>
     </section>
 </aside>
     <main>
@@ -53,15 +54,19 @@
                     
                 </div>
         </div>
+        <p data-message="board-status" class="sub-text board-message"> </p>
         <section class="scores-and-turn">   
-                <span data-result="X" class="scores">
-                    Player X
+                <span data-result="X" class="scores current-turn">
+                    <p class="heading">Player(X)</P>
+                    <p data-result="score-X">0</p>
                 </span>
                 <span class="scores">
-                    Draw
+                    <p class="heading">Draw</p>
+                    <p data-result="score-draw">0</p>
                 </span>
                 <span data-result="O" class="scores">
-                    player O
+                    <p class="heading"> Player(O)</p>
+                    <p data-result="score-O">0</p>
                 </span>
         </section>
     </main>

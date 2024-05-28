@@ -1,28 +1,20 @@
-const appSettings = {
-    dark: true,
-    soundOn: true,
-}
+(() => {
+const { dispatchAppEvent} = window.ticTacToe;
 
-document.addEventListener("applySettings", applySettings)
-document.addEventListener("DOMContentLoaded", () => document.dispatchEvent(new CustomEvent("applySettings", {detail: appSettings})))
-
-
-
-document.getElementById('toggle-theme').addEventListener('click', toggleTheme)
+document.getElementById('toggle-theme').addEventListener('click', toggleTheme);
+document.getElementById('toggle-sound').addEventListener('click', toggleSound);
+document.getElementById('toggle-against-ai').addEventListener('click', toggleAgainstAI);
 
 
 function toggleTheme() {
-    appSettings.dark = !appSettings.dark;
-    document.dispatchEvent(new CustomEvent("applySettings", {detail: appSettings}));
+    const {appState} = window.ticTacToe;
+    dispatchAppEvent("APPLY_SETTINGS", {...appState, isDarkTheme: !appState.isDarkTheme })
  }
- 
- 
- function applySettings(e){
-     if(appSettings.dark){
-         document.body.classList.add('dark-theme');
-         document.body.classList.remove('light-theme');
-     }else{
-         document.body.classList.add('light-theme');
-         document.body.classList.remove('dark-theme'); 
-     }
+
+ function toggleSound(){
+    // todo
  }
+
+ function toggleAgainstAI(){
+    // todo
+ }})();

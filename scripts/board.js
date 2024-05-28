@@ -1,22 +1,14 @@
+const { dispatchAppEvent} = window.ticTacToe;
 
-let board = Array(9).fill(null)
-let currentPlayer = "X";  //symbol
-const scores = {
-    X: 0,
-    draw: 0,
-    O: 0
+document.getElementById('board').addEventListener('click', handleBoardClick);
+
+function highlightCurrentPlayer(newCurrentPlayer) {
+    document.querySelector(`[data-result="${window.ticTacToe.appState.currentPlayer}"]`).classList.remove("current-turn")
+    document.querySelector(`[data-result="${newCurrentPlayer}"]`).classList.add("current-turn")
 }
 
-
-function toggleCurrentPlayer() {
-    document.querySelector(`[data-result="${currentPlayer}"]`).classList.remove("current-turn")
-    currentPlayer =  currentPlayer === "X" ? "O" : "X";
-    document.querySelector(`[data-result="${currentPlayer}"]`).classList.add("current-turn")
-}
-
-
-function renderBoardState(){
-    board.forEach((cellValue, index) => {
+function renderBoardState(board){
+    (board ? board : window.ticTacToe.appState.board).forEach((cellValue, index) => {
         if(cellValue){
             document.querySelector(`[data-cell-id="${index}"]`).innerHTML = cellValue
         }else {
@@ -25,70 +17,42 @@ function renderBoardState(){
     });
 }
 
-function updateBoardState(e){
-    const baordCellIndex = e.target.getAttribute('data-cell-id')
-    if(board[baordCellIndex] === null){
-        board[baordCellIndex] = currentPlayer;
-        return true;
-    }
-    return false;
-   
-}
-
 
 function handleBoardClick(e){
-    if(!updateBoardState(e)){
+    const {board, currentPlayer} = window.ticTacToe.appState;
+    const cell = e.target.getAttribute('data-cell-id');
+    const newBoardState = [...board];
+    if(newBoardState[cell] == null){
+        newBoardState[cell] = currentPlayer;
+    dispatchAppEvent("PLAY_TURN", {...window.ticTacToe.appState, board: newBoardState});
+    if(checkForWinner(newBoardState)){
+        dispatchAppEvent("GAME_END", {currentPlayer})
         return;
-    };
-    renderBoardState();
-    const winner = checkWinner(currentPlayer)
-    if(winner || !board.some(turn => turn === null)){
-        document.dispatchEvent(new CustomEvent("gameEnd", {detail: {isDraw: winner ? false : true, winner}, bubbles: true}))
+    }else if(isDraw(newBoardState)){
+        dispatchAppEvent("GAME_DRAW", {})
         return;
     }
-    toggleCurrentPlayer();
-}
-
-
-
-function handleResults(e){
-    const {winner, isDraw} = e.detail;
-
-    if(isDraw){
-        scores['draw'] = scores['draw'] + 1;
-        document.querySelector('[data-message="board-status"]').innerHTML = 'It is a draw!'
-    }else{
-        scores[winner] = scores[winner] + 1;
-        document.querySelector('[data-message="board-status"]').innerHTML = `Player ${winner} won the game!`
+    const newCurrentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    dispatchAppEvent("TOGGLE_TURN", {...window.ticTacToe.appState, currentPlayer: newCurrentPlayer})
     }
-    Object.keys(scores).forEach(scoreType => document.querySelector(`[data-result="score-${scoreType}"]`).innerHTML = scores[scoreType]);
-    const boardElement = document.getElementById('board');
-    boardElement.removeEventListener("click", handleBoardClick);
-    boardElement.addEventListener("click", () => {
-        resetGame();
-        document.getElementById('board').addEventListener('click', handleBoardClick)
-    }, {once: true})
     
 }
 
+
 function resetGame() {
-    board = Array(9).fill(null);
-    document.querySelectorAll(`[data-result]`).forEach(player => player.classList.remove("current-turn"))
-    currentPlayer= "X";
-    document.querySelector(`[data-result="${currentPlayer}"]`).classList.add("current-turn")
-    renderBoardState();
-
-
+    const boardElement = document.getElementById('board');
+    boardElement.removeEventListener("click", handleBoardClick);
+    boardElement.addEventListener("click", () => {
+        dispatchAppEvent("GAME_RESET", {...window.ticTacToe.appState, board: Array(9).fill(null)})
+        document.getElementById('board').addEventListener('click', handleBoardClick)
+    }, {once: true})
 }
 
+function isDraw(board){
+  return !board.some(turn => turn === null)  
+}
 
-
-document.getElementById('board').addEventListener('click', handleBoardClick);
-document.addEventListener("gameEnd", handleResults)
-
-
-
-function checkWinner(currentPlayer){
+function checkForWinner(board){
     const allEqual = (arr) => arr.every(val => val == arr[0] && val != null)
     if(
     allEqual([board[0], board[1], board[2]])
@@ -100,7 +64,7 @@ function checkWinner(currentPlayer){
     || allEqual([board[3], board[4], board[5]])
     || allEqual([board[6], board[7], board[8]])
     ){
-        return currentPlayer;
+        return true;
     }
-    return null;
+    return false;
 }

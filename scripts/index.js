@@ -3,11 +3,9 @@ window.ticTacToe = {};
     const initialState = {
         board: Array(9).fill(null),
         currentPlayer: "X",
-        scores: {
-            X: 0,
-            draw: 0,
-            O: 0
-        },
+        X: 0,
+        draw: 0,
+        O: 0,
         isDarkTheme: true,
         isSound: true,
         isAgainstAI: false
@@ -42,61 +40,62 @@ window.ticTacToe = {};
 function onGameEnd(e){
     // log: gameEnd
     // change UI and app state
-    const {currentPlayer} = e.detail;
+    const {appState} = window.ticTacToe;
+    const {currentPlayer} = appState;
     document.querySelector('[data-message="board-status"]').innerHTML = `Player ${currentPlayer} won the game!`;
-    window.ticTacToe.appState.scores[currentPlayer] += 1;
-    Object.keys(window.ticTacToe.appState.scores).forEach(scoreType => document.querySelector(`[data-result="score-${scoreType}"]`).innerHTML = window.ticTacToe.appState.scores[scoreType]);
+    document.querySelector(`[data-result="score-${currentPlayer}"]`).innerHTML = appState[currentPlayer];
     resetGame(); //manage this
 
 }
 
 function onGameDraw() {
     document.querySelector('[data-message="board-status"]').innerHTML = 'It is a draw!';
-    window.ticTacToe.appState.scores.draw += 1;
-    Object.keys(window.ticTacToe.appState.scores).forEach(scoreType => document.querySelector(`[data-result="score-${scoreType}"]`).innerHTML = window.ticTacToe.appState.scores[scoreType]);
+    document.querySelector(`[data-result="score-draw"]`).innerHTML = window.ticTacToe.appState.draw;
     resetGame(); //manage this
 
 }
 
-function updateSettings(e){
+function updateSettings(){
     //log: applySettings
     // change settings
 
-    const {isDarkTheme} = window.ticTacToe.appState;
+    const {isDarkTheme, isSound} = window.ticTacToe.appState;
+    const buttonIcon = document.getElementById("setting-icon-theme");
+    const soundIcon = document.getElementById("setting-icon-sound");
     if(isDarkTheme){
+        buttonIcon.src = "../assets/images/dark-theme.svg"
         if(!document.body.classList.contains('dark-theme')) {
             document.body.classList.add('dark-theme');
         }
         document.body.classList.remove('light-theme');
     }else{
+        buttonIcon.src = "../assets/images/light-theme.svg"
         if(!document.body.classList.contains('light-theme')) {
             document.body.classList.add('light-theme');
         }
         document.body.classList.remove('dark-theme'); 
     }
 
+    soundIcon.src = isSound ? "../assets/images/sound-on.svg" : "../assets/images/sound-off.svg"
+
 
 }
 
-function onGameReset(e) {
+function onGameReset() {
     //log: gameStart
     // reset the game
-    renderBoardState(e.detail.board)
     document.querySelector('[data-message="board-status"]').innerHTML = "";
-    window.ticTacToe.appState = e.detail;
-   
+    renderBoardState()
 }
 
-function onPlayTurn(e) {
-    const {board, currentPlayer} = e.detail;
-    renderBoardState(board); // manage this
-    window.ticTacToe.appState = {...e.detail}
+function onPlayTurn() {
+    playTurnAudio();
+    renderBoardState();
 }
 
 
-function onToggleTurn(e){
-    highlightCurrentPlayer(e.detail.currentPlayer)
-    window.ticTacToe.appState = {...e.detail}
+function onToggleTurn(){
+    highlightCurrentPlayer();
 }
 
 

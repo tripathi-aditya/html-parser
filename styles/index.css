@@ -115,24 +115,34 @@ footer {
     display: flex;
     justify-content: space-evenly;
     padding: var(--padding-md);
-  
 }
 
 .setting-toggle {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     border-radius: 0.25rem;
     padding:  var(--padding-xs);
+    min-width: 3rem;
     width: fit-content;
     background-color: var(--contrast-primary);
     font-family: inherit;
     transition: all 0.1s ease-in;
     font-size: inherit;
     box-shadow: 0.2rem 0.1rem  var(--font-color-primary);
+    margin: var(--margin-sm);
 
     &:hover{
         cursor: pointer;
         background-color: var(--contrast-secondary);
         color: var(--font-color-primary);
         box-shadow:none;
+    }
+
+    .setting-icon {
+        width: 15px;
+        height: 15px;
+        margin: 0 0 0 var(--margin-xs);
     }
 }
 

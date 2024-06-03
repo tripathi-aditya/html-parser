@@ -3,7 +3,7 @@ const { dispatchAppEvent} = window.ticTacToe;
 
 document.getElementById('toggle-theme').addEventListener('click', toggleTheme);
 document.getElementById('toggle-sound').addEventListener('click', toggleSound);
-document.getElementById('toggle-against-ai').addEventListener('click', toggleAgainstAI);
+// document.getElementById('toggle-against-ai').addEventListener('click', toggleAgainstAI);
 
 
 function toggleTheme() {
@@ -12,7 +12,9 @@ function toggleTheme() {
  }
 
  function toggleSound(){
-    // todo
+   const {appState} = window.ticTacToe;
+   dispatchAppEvent("APPLY_SETTINGS", {...appState, isSound: !appState.isSound })
+    
  }
 
  function toggleAgainstAI(){

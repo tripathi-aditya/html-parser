@@ -26,7 +26,6 @@ export function renderBoardState(){
 }
 
 export function resetGame() {
-    playGameOverAudio();
     const boardElement = document.getElementById('board');
     boardElement.removeEventListener("click", handleBoardClick);
     boardElement.addEventListener("click", () => {

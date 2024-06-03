@@ -1,9 +1,9 @@
 
 // use shadow dom concepts for all type of DOM mutations
-import settingsIconSoundOn from "../../public/assets/images/sound-on.svg";
-import settingsIconSoundOff from "../../public/assets/images/sound-off.svg";
-import settingsIconDarkTheme from "../../public/assets/images/dark-theme.svg";
-import settingsIconLightTheme from "../../public/assets/images/light-theme.svg";
+import settingsIconSoundOn from "../assets/images/sound-on.svg";
+import settingsIconSoundOff from "../assets/images/sound-off.svg";
+import settingsIconDarkTheme from "../assets/images/dark-theme.svg";
+import settingsIconLightTheme from "../assets/images/light-theme.svg";
 
 import {handleBoardClick} from "./utils";
 

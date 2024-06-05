@@ -40,7 +40,7 @@ footer {
         font-size: 3rem;
     }
 
-    .cell_zero {
+    .cell_0 {
         grid-column: 1/2;
         grid-row: 1/2;
         border: none;
@@ -48,54 +48,54 @@ footer {
         border-right: 0.4rem solid; 
     }
     
-    .cell_first {
+    .cell_1 {
         grid-column: 2/3;
         grid-row: 1/2;
         border-top: none;
         border-bottom: 0.4rem solid; 
         border-right: 0.4rem solid;
     }
-    .cell_second {
+    .cell_2 {
         grid-column: 3/4;
         grid-row: 1/2;
         border-top: none;
         border-right: none;
         border-bottom: 0.4rem solid; 
     }
-    .cell_third {
+    .cell_3 {
         grid-column: 1/2;
         grid-row: 2/3;
         border-left: none;
         border-right: 0.4rem solid; 
         border-bottom: 0.4rem solid; 
     }
-    .cell_fourth {
+    .cell_4 {
         grid-column: 2/3;
         grid-row: 2/3;
         border-right: 0.4rem solid; 
         border-bottom: 0.4rem solid; 
 
     }
-    .cell_fifth {
+    .cell_5 {
         grid-column: 3/4;
         grid-row: 2/3;
         border-right: none;
         border-bottom: 0.4rem solid; 
     }
-    .cell_sixth {
+    .cell_6 {
         grid-column: 1/2;
         grid-row: 3/4;
         border-left: none;
         border-bottom: none;
         border-right: 0.4rem solid; 
     }
-    .cell_seventh {
+    .cell_7 {
         grid-column: 2/3;
         grid-row: 3/4;
         border-bottom: none;
         border-right: 0.4rem solid; 
     }
-    .cell_eigth {
+    .cell_8 {
         grid-column: 3/4;
         grid-row: 3/4;
         border-right: none;

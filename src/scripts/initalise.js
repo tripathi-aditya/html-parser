@@ -1,5 +1,5 @@
-import {onToggleTurn, onGameEnd, onGameDraw, updateSettings, onGameReset, onPlayTurn} from "./eventListeners";
-import {handleBoardClick, toggleSound, toggleTheme, preloadAssets} from "./utils";
+import {onToggleTurn, onGameEnd, onGameDraw, updateSettings, onGameReset, onPlayTurn, onAssetsLoaded, downloadRenderAssets} from "./eventListeners";
+import {handleBoardClick, loadRenderAssets, toggleSound, toggleTheme} from "./utils";
 
 function init() {
     const initialState = {
@@ -8,7 +8,7 @@ function init() {
         X: 0,
         draw: 0,
         O: 0,
-        isDarkTheme: true,
+        isDarkTheme: false,
         isSound: true,
         isAgainstAI: false
     };
@@ -18,7 +18,10 @@ function init() {
     ["GAME_DRAW", "gameDraw"],
     ["TOGGLE_TURN", "toggleTurn"],
     ["PLAY_TURN", "playTurn"],
-    ["GAME_RESET", "gameReset"]])
+    ["GAME_RESET", "gameReset"],
+    ["LOAD_RENDER_ASSETS", "loadRenderAssets"],
+    ["RENDER_ASSETS_READY", "renderAssetsReady"]
+])
 
     function dispatchAppEvent(eventName, eventData, element) {
         const {events} = window.ticTacToe;
@@ -33,7 +36,6 @@ function init() {
         // log: trying to raise incorrect event 
     }    
     window.ticTacToe = {appState: initialState, events: appEvents, dispatchAppEvent}
-    preloadAssets();
 
 }
 
@@ -61,21 +63,21 @@ function hydrate() {
             case events.get("PLAY_TURN"):
                 document.addEventListener(eventName, onPlayTurn)
                 break;
+            case events.get("LOAD_RENDER_ASSETS"):
+                document.addEventListener(eventName, downloadRenderAssets)
+                break;
+            case events.get("RENDER_ASSETS_READY"):
+                document.addEventListener(eventName, onAssetsLoaded)
+                break;
             default:
                 break;
         }
     }
 
-    //attach user events
     document.getElementById('board').addEventListener('click', handleBoardClick);
     document.getElementById('toggle-theme').addEventListener('click', toggleTheme);
     document.getElementById('toggle-sound').addEventListener('click', toggleSound);
-
-    // apply settings, update to use the one saved in local-storage
-    preloadAssets();
-    window.ticTacToe.dispatchAppEvent("APPLY_SETTINGS")
-
-    // load music
+    document.addEventListener('DOMContentLoaded', loadRenderAssets, {once: true})
 }
 
 export default {

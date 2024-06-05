@@ -1,28 +1,43 @@
 
-// use shadow dom concepts for all type of DOM mutations
-import settingsIconSoundOn from "../../public/assets/images/sound-on.svg";
-import settingsIconSoundOff from "../../public/assets/images/sound-off.svg";
-import settingsIconDarkTheme from "../../public/assets/images/dark-theme.svg";
-import settingsIconLightTheme from "../../public/assets/images/light-theme.svg";
-
-import {handleBoardClick} from "./utils";
+import { getSettingsIconDarkTheme, getSettingsIconLightTheme, getSettingsIconSoundOff, getSettingsIconSoundOn } from "./assetLoad";
+import {handleBoardClick, toggleSound, toggleTheme} from "./utils";
 
 
 export function highlightCurrentPlayer() {
-    const {currentPlayer} = window.ticTacToe.appState;
-    const nonCurrentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    document.querySelector(`[data-result="${nonCurrentPlayer}"]`).classList.remove("current-turn")
-    document.querySelector(`[data-result="${currentPlayer}"]`).classList.add("current-turn")
+    const scoreBoard = document.getElementById("score-board");
+    const scoreBoardFrag = document.createDocumentFragment();
+    const scores = scoreBoard.cloneNode(true).querySelectorAll(".scores");
+    scores.forEach(element => {
+        if("toggleTurn" in element.dataset){
+            element.classList.toggle("current-turn")
+        }
+        scoreBoardFrag.append(element)
+    })
+    scoreBoard.replaceChildren(scoreBoardFrag);
 }
 
 export function renderBoardState(){
-    window.ticTacToe.appState.board.forEach((cellValue, index) => {
-        if(cellValue){
-            document.querySelector(`[data-cell-id="${index}"]`).innerHTML = cellValue
-        }else {
-            document.querySelector(`[data-cell-id="${index}"]`).innerHTML = null;
+    const {board} = window.ticTacToe.appState;
+    const cellNodes = document.querySelectorAll(".cell");
+    board.map((value, index) => {
+        const cellContent = cellNodes[index].textContent.trim();
+        if(value !== cellContent && cellContent === "" &&  value !== null){
+            const textNode = document.createTextNode(value);
+            cellNodes[index].append(textNode) 
         }
+    })
+}
+
+export function resetBoard(){
+    const boardFrag = document.createDocumentFragment();
+    const cellNodes = document.querySelectorAll(".cell");
+    cellNodes.forEach(cell => boardFrag.append(cell.cloneNode()));
+    const cellsToUpdate = boardFrag.querySelectorAll(".cell");
+    cellsToUpdate.forEach((cell) => {
+        const textNode = document.createTextNode("");
+            cell.append(textNode);
     });
+    document.getElementById("board").replaceChildren(boardFrag);
 }
 
 export function resetGame() {
@@ -36,54 +51,57 @@ export function resetGame() {
 
 export function updateThemeSettingUI() {
     const {isDarkTheme} = window.ticTacToe.appState;
+    document.body.classList.toggle('dark-theme', isDarkTheme);
+    updateSettingIcons();
+}
 
-    const buttonIcon = document.getElementById("setting-icon-theme");
-    if(isDarkTheme){
-        buttonIcon.src = settingsIconDarkTheme;
-        if(!document.body.classList.contains('dark-theme')) {
-            document.body.classList.add('dark-theme');
+export function updateSettingIcons() {
+    const { isSound, isDarkTheme} = window.ticTacToe.appState;
+    const settings = document.getElementById('settings');
+    const buttons = settings.cloneNode(true).querySelectorAll('.setting-toggle');
+    const settingsFrag = document.createDocumentFragment();
+    buttons.forEach((element) => {
+        const soundSetting = element.querySelector('#setting-icon-sound');
+        const themeSetting = element.querySelector('#setting-icon-theme');
+        if(soundSetting){
+            soundSetting.src = isSound ? getSettingsIconSoundOn() : getSettingsIconSoundOff();
+            element.addEventListener('click', toggleSound);
         }
-        document.body.classList.remove('light-theme');
-    }else{
-        buttonIcon.src = settingsIconLightTheme;
-        if(!document.body.classList.contains('light-theme')) {
-            document.body.classList.add('light-theme');
+        else if(themeSetting) {
+            themeSetting.src = isDarkTheme ? getSettingsIconDarkTheme() : getSettingsIconLightTheme();
+            element.addEventListener('click', toggleTheme);
         }
-        document.body.classList.remove('dark-theme'); 
-    }
-
+        settingsFrag.append(element);
+    })
+    settings.replaceChildren(settingsFrag);
 }
 
 export function updateSoundSettingsUI() {
-    const { isSound} = window.ticTacToe.appState;
-  
-    const soundIcon = document.getElementById("setting-icon-sound");
-
-    soundIcon.src = isSound ? settingsIconSoundOn : settingsIconSoundOff;
+    updateSettingIcons();
 }
 
 export function updateGameScoresUI(isDraw) {
     if(isDraw){
-        document.querySelector(`[data-result="score-draw"]`).innerHTML = window.ticTacToe.appState.draw;
+        document.querySelector(`[data-result="score-draw"]`).textContent = window.ticTacToe.appState.draw;
         return;
     }
     const {appState} = window.ticTacToe;
     const {currentPlayer} = appState;
-    document.querySelector(`[data-result="score-${currentPlayer}"]`).innerHTML = appState[currentPlayer];
+    document.querySelector(`[data-result="score-${currentPlayer}"]`).textContent = appState[currentPlayer];
     
 }
 
 
 export function setGameResultMessage(isDraw){
     if(isDraw){
-        document.querySelector('[data-message="board-status"]').innerHTML = "It's a Draw!";
+        document.querySelector('[data-message="board-status"]').textContent = "It's a Draw!";
         return;
     }else if (isDraw === false) {
         const {currentPlayer} = window.ticTacToe.appState;
 
-        document.querySelector('[data-message="board-status"]').innerHTML = `Player ${currentPlayer} won the game!`;
+        document.querySelector('[data-message="board-status"]').textContent = `Player ${currentPlayer} won the game!`;
         return;
     }
-    document.querySelector('[data-message="board-status"]').innerHTML = "";
+    document.querySelector('[data-message="board-status"]').textContent = "";
 
 }

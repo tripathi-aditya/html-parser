@@ -16,13 +16,19 @@ export function highlightCurrentPlayer() {
 }
 
 export function renderBoardState(){
+    const boardFrag = document.createDocumentFragment();
     window.ticTacToe.appState.board.forEach((cellValue, index) => {
-        if(cellValue){
-            document.querySelector(`[data-cell-id="${index}"]`).innerHTML = cellValue
-        }else {
-            document.querySelector(`[data-cell-id="${index}"]`).innerHTML = null;
-        }
+            const emptyCellNode = document.createElement('div');
+            emptyCellNode.setAttribute('data-cell-id', index);
+            emptyCellNode.classList.add("cell", `cell_${index}`)
+            const textNode = document.createTextNode(cellValue || "");
+            emptyCellNode.append(textNode);
+            boardFrag.append(emptyCellNode);
     });
+    const board =  document.getElementById('board');
+    board.innerHTML = "";
+    board.appendChild(boardFrag);
+
 }
 
 export function resetGame() {

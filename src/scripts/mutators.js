@@ -9,26 +9,40 @@ import {handleBoardClick} from "./utils";
 
 
 export function highlightCurrentPlayer() {
-    const {currentPlayer} = window.ticTacToe.appState;
-    const nonCurrentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    document.querySelector(`[data-result="${nonCurrentPlayer}"]`).classList.remove("current-turn")
-    document.querySelector(`[data-result="${currentPlayer}"]`).classList.add("current-turn")
+    const scoreBoard = document.getElementById("score-board");
+    const scoreBoardFrag = document.createDocumentFragment();
+    const scores = scoreBoard.cloneNode(true).querySelectorAll(".scores");
+    scores.forEach(element => {
+        if("toggleTurn" in element.dataset){
+            element.classList.toggle("current-turn")
+        }
+        scoreBoardFrag.append(element)
+    })
+    scoreBoard.replaceChildren(scoreBoardFrag);
 }
 
 export function renderBoardState(){
-    const boardFrag = document.createDocumentFragment();
-    window.ticTacToe.appState.board.forEach((cellValue, index) => {
-            const emptyCellNode = document.createElement('div');
-            emptyCellNode.setAttribute('data-cell-id', index);
-            emptyCellNode.classList.add("cell", `cell_${index}`)
-            const textNode = document.createTextNode(cellValue || "");
-            emptyCellNode.append(textNode);
-            boardFrag.append(emptyCellNode);
-    });
-    const board =  document.getElementById('board');
-    board.innerHTML = "";
-    board.appendChild(boardFrag);
+    const {board} = window.ticTacToe.appState;
+    const cellNodes = document.querySelectorAll(".cell");
+    board.map((value, index) => {
+        const cellContent = cellNodes[index].textContent.trim();
+        if(value !== cellContent && cellContent === "" &&  value !== null){
+            const textNode = document.createTextNode(value);
+            cellNodes[index].append(textNode) 
+        }
+    })
+}
 
+export function resetBoard(){
+    const boardFrag = document.createDocumentFragment();
+    const cellNodes = document.querySelectorAll(".cell");
+    cellNodes.forEach(cell => boardFrag.append(cell.cloneNode()));
+    const cellsToUpdate = boardFrag.querySelectorAll(".cell");
+    cellsToUpdate.forEach((cell) => {
+        const textNode = document.createTextNode("");
+            cell.append(textNode);
+    });
+    document.getElementById("board").replaceChildren(boardFrag);
 }
 
 export function resetGame() {

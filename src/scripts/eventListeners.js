@@ -1,5 +1,5 @@
 
-import { resetGame, renderBoardState, highlightCurrentPlayer, updateSoundSettingsUI, updateThemeSettingUI, setGameResultMessage, updateGameScoresUI} from "./mutators";
+import { resetGame, renderBoardState, highlightCurrentPlayer, updateSoundSettingsUI, updateThemeSettingUI, setGameResultMessage, updateGameScoresUI, resetBoard} from "./mutators";
 
 export function onGameEnd(){
     updateGameScoresUI(false);
@@ -22,7 +22,7 @@ export function updateSettings(){
 
 export function onGameReset() {
     setGameResultMessage();
-    renderBoardState()
+    resetBoard();
 }
 
 export function onPlayTurn() {

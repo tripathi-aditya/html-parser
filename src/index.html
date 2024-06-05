@@ -63,8 +63,8 @@
                 </div>
         </div>
         <p data-message="board-status" class="sub-text board-message"> </p>
-        <section class="scores-and-turn">   
-                <span data-result="X" class="scores current-turn">
+        <section id="score-board" class="scores-and-turn">   
+                <span data-toggle-turn class="scores current-turn">
                     <p class="heading">Player(X)</P>
                     <p data-result="score-X">0</p>
                 </span>
@@ -72,7 +72,7 @@
                     <p class="heading">Draw</p>
                     <p data-result="score-draw">0</p>
                 </span>
-                <span data-result="O" class="scores">
+                <span data-toggle-turn class="scores">
                     <p class="heading"> Player(O)</p>
                     <p data-result="score-O">0</p>
                 </span>

@@ -1,11 +1,6 @@
 
-// use shadow dom concepts for all type of DOM mutations
-import settingsIconSoundOn from "../../public/assets/images/sound-on.svg";
-import settingsIconSoundOff from "../../public/assets/images/sound-off.svg";
-import settingsIconDarkTheme from "../../public/assets/images/dark-theme.svg";
-import settingsIconLightTheme from "../../public/assets/images/light-theme.svg";
-
-import {handleBoardClick} from "./utils";
+import { getSettingsIconDarkTheme, getSettingsIconLightTheme, getSettingsIconSoundOff, getSettingsIconSoundOn } from "./assetLoad";
+import {handleBoardClick, toggleSound, toggleTheme} from "./utils";
 
 
 export function highlightCurrentPlayer() {
@@ -56,41 +51,57 @@ export function resetGame() {
 
 export function updateThemeSettingUI() {
     const {isDarkTheme} = window.ticTacToe.appState;
-    const buttonIcon = document.getElementById("setting-icon-theme");
-    buttonIcon.src = isDarkTheme ? settingsIconDarkTheme : settingsIconLightTheme;
-    document.body.classList.toggle('dark-theme');
+    document.body.classList.toggle('dark-theme', isDarkTheme);
+    updateSettingIcons();
+}
+
+export function updateSettingIcons() {
+    const { isSound, isDarkTheme} = window.ticTacToe.appState;
+    const settings = document.getElementById('settings');
+    const buttons = settings.cloneNode(true).querySelectorAll('.setting-toggle');
+    const settingsFrag = document.createDocumentFragment();
+    buttons.forEach((element) => {
+        const soundSetting = element.querySelector('#setting-icon-sound');
+        const themeSetting = element.querySelector('#setting-icon-theme');
+        if(soundSetting){
+            soundSetting.src = isSound ? getSettingsIconSoundOn() : getSettingsIconSoundOff();
+            element.addEventListener('click', toggleSound);
+        }
+        else if(themeSetting) {
+            themeSetting.src = isDarkTheme ? getSettingsIconDarkTheme() : getSettingsIconLightTheme();
+            element.addEventListener('click', toggleTheme);
+        }
+        settingsFrag.append(element);
+    })
+    settings.replaceChildren(settingsFrag);
 }
 
 export function updateSoundSettingsUI() {
-    const { isSound} = window.ticTacToe.appState;
-  
-    const soundIcon = document.getElementById("setting-icon-sound");
-
-    soundIcon.src = isSound ? settingsIconSoundOn : settingsIconSoundOff;
+    updateSettingIcons();
 }
 
 export function updateGameScoresUI(isDraw) {
     if(isDraw){
-        document.querySelector(`[data-result="score-draw"]`).innerHTML = window.ticTacToe.appState.draw;
+        document.querySelector(`[data-result="score-draw"]`).textContent = window.ticTacToe.appState.draw;
         return;
     }
     const {appState} = window.ticTacToe;
     const {currentPlayer} = appState;
-    document.querySelector(`[data-result="score-${currentPlayer}"]`).innerHTML = appState[currentPlayer];
+    document.querySelector(`[data-result="score-${currentPlayer}"]`).textContent = appState[currentPlayer];
     
 }
 
 
 export function setGameResultMessage(isDraw){
     if(isDraw){
-        document.querySelector('[data-message="board-status"]').innerHTML = "It's a Draw!";
+        document.querySelector('[data-message="board-status"]').textContent = "It's a Draw!";
         return;
     }else if (isDraw === false) {
         const {currentPlayer} = window.ticTacToe.appState;
 
-        document.querySelector('[data-message="board-status"]').innerHTML = `Player ${currentPlayer} won the game!`;
+        document.querySelector('[data-message="board-status"]').textContent = `Player ${currentPlayer} won the game!`;
         return;
     }
-    document.querySelector('[data-message="board-status"]').innerHTML = "";
+    document.querySelector('[data-message="board-status"]').textContent = "";
 
 }

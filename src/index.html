@@ -14,57 +14,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
 </head>
-<body class="dark-theme">
+<body >
     <aside class="logo-settings-wrapper">
-    <header class="logo">
-        <span class="heading">at</span>
-    </header>
-    <section class="settings">
-        <!-- <button id="toggle-against-ai" class="setting-toggle" >Play with AI</button> -->
-        <button id="toggle-sound" class="setting-toggle">
-            <span>SOUND</span>
-            <img class="setting-icon" id="setting-icon-sound" src="#" />
-        </button>
-        <!-- make as checkbox for accessibility -->
-        <button id="toggle-theme" class="setting-toggle">
-            <span>THEME</span>
-            <img class="setting-icon" id="setting-icon-theme" src="#" />
-        </button>
-    </section>
-</aside>
+        <header class="logo">
+            <span class="heading">at</span>
+        </header>
+        <section id="settings" class="settings">
+            <!-- <button id="toggle-against-ai" class="setting-toggle" >Play with AI</button> -->
+            <button id="toggle-sound" class="setting-toggle">
+                <span>SOUND</span>
+                <img class="setting-icon" id="setting-icon-sound" src="#" />
+            </button>
+            <!-- make as checkbox for accessibility -->
+            <button id="toggle-theme" class="setting-toggle">
+                <span>THEME</span>
+                <img class="setting-icon" id="setting-icon-theme" src="#" />
+            </button>
+        </section>
+    </aside>
     <main>
         <div id="board" class="board">
-                <div data-cell-id="0" class="cell cell_zero">
+                <div data-cell-id="0" class="cell cell_0">
                 
                 </div>
-                <div data-cell-id="1" class="cell cell_first">
+                <div data-cell-id="1" class="cell cell_1">
                     
                 </div>
-                <div data-cell-id="2" class="cell cell_second">
+                <div data-cell-id="2" class="cell cell_2">
                     
                 </div>
-                <div data-cell-id="3" class="cell cell_third">
+                <div data-cell-id="3" class="cell cell_3">
                     
                 </div>
-                <div data-cell-id="4" class="cell cell_fourth">
+                <div data-cell-id="4" class="cell cell_4">
            
                 </div>
-                <div data-cell-id="5" class="cell cell_fifth">
+                <div data-cell-id="5" class="cell cell_5">
                     
                 </div>
-                <div data-cell-id="6" class="cell cell_sixth">
+                <div data-cell-id="6" class="cell cell_6">
                     
                 </div>
-                <div data-cell-id="7" class="cell cell_seventh">
+                <div data-cell-id="7" class="cell cell_7">
                     
                 </div>
-                <div data-cell-id="8" class="cell cell_eigth">
+                <div data-cell-id="8" class="cell cell_8">
                     
                 </div>
         </div>
         <p data-message="board-status" class="sub-text board-message"> </p>
-        <section class="scores-and-turn">   
-                <span data-result="X" class="scores current-turn">
+        <section id="score-board" class="scores-and-turn">   
+                <span data-toggle-turn class="scores current-turn">
                     <p class="heading">Player(X)</P>
                     <p data-result="score-X">0</p>
                 </span>
@@ -72,7 +72,7 @@
                     <p class="heading">Draw</p>
                     <p data-result="score-draw">0</p>
                 </span>
-                <span data-result="O" class="scores">
+                <span data-toggle-turn class="scores">
                     <p class="heading"> Player(O)</p>
                     <p data-result="score-O">0</p>
                 </span>

@@ -15,6 +15,14 @@
     --font-size-sm: 16px;
     --font-size-md: 20px;
     --font-size-lg: 24px;
+
+    --background: #f4f4f6;
+    --background-highlight: #f4f4f6;
+    --content-highlight: #9999a1;
+    --font-color-primary: #201934;
+    --font-color-secondary: #9999A1;
+    --contrast-primary: #8c62ff;
+    --contrast-secondary: #cab6ff;
 }
 
 .dark-theme {
@@ -27,7 +35,7 @@
     --contrast-secondary: #2d2348;
 }
 
-.light-theme {
+/* .light-theme {
     --background: #f4f4f6;
     --background-highlight: #f4f4f6;
     --content-highlight: #9999a1;
@@ -36,7 +44,7 @@
     --contrast-primary: #8c62ff;
     --contrast-secondary: #cab6ff;
 
-}
+} */
 
 :root {
     font-size: var(--font-size-sm);

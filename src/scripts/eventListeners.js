@@ -1,5 +1,6 @@
 
-import { resetGame, renderBoardState, highlightCurrentPlayer, updateSoundSettingsUI, updateThemeSettingUI, setGameResultMessage, updateGameScoresUI, resetBoard} from "./mutators";
+import { loadIconAssets } from "./assetLoad";
+import { resetGame, renderBoardState, highlightCurrentPlayer, updateSoundSettingsUI, updateThemeSettingUI, setGameResultMessage, updateGameScoresUI, resetBoard, updateSettingIcons} from "./mutators";
 
 export function onGameEnd(){
     updateGameScoresUI(false);
@@ -26,7 +27,6 @@ export function onGameReset() {
 }
 
 export function onPlayTurn() {
-    // playTurnAudio();
     renderBoardState();
 }
 
@@ -35,3 +35,10 @@ export function onToggleTurn(){
 }
 
 
+export function onAssetsLoaded() {
+    updateSettingIcons();
+}
+
+export function downloadRenderAssets() {
+    loadIconAssets();
+}

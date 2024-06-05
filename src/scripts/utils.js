@@ -1,9 +1,3 @@
-import settingsIconSoundOn from "../../public/assets/images/sound-on.svg";
-import settingsIconSoundOff from "../../public/assets/images/sound-off.svg";
-import settingsIconDarkTheme from "../../public/assets/images/dark-theme.svg";
-import settingsIconLightTheme from "../../public/assets/images/light-theme.svg";
-
-
 export function isDraw(board){
     return !board.some(turn => turn === null)  
   }
@@ -58,11 +52,8 @@ export function toggleSound(){
    dispatchAppEvent("APPLY_SETTINGS", {...appState, isSound: !appState.isSound })
     
  }
- 
 
- export function preloadAssets() {
-      new Image().src = settingsIconSoundOn;
-      new Image().src = settingsIconSoundOff;
-      new Image().src = settingsIconLightTheme;
-      new Image().src = settingsIconDarkTheme;
+
+ export function loadRenderAssets() {
+    window.ticTacToe.dispatchAppEvent("LOAD_RENDER_ASSETS")
  }

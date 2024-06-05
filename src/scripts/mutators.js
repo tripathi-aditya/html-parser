@@ -56,22 +56,9 @@ export function resetGame() {
 
 export function updateThemeSettingUI() {
     const {isDarkTheme} = window.ticTacToe.appState;
-
     const buttonIcon = document.getElementById("setting-icon-theme");
-    if(isDarkTheme){
-        buttonIcon.src = settingsIconDarkTheme;
-        if(!document.body.classList.contains('dark-theme')) {
-            document.body.classList.add('dark-theme');
-        }
-        document.body.classList.remove('light-theme');
-    }else{
-        buttonIcon.src = settingsIconLightTheme;
-        if(!document.body.classList.contains('light-theme')) {
-            document.body.classList.add('light-theme');
-        }
-        document.body.classList.remove('dark-theme'); 
-    }
-
+    buttonIcon.src = isDarkTheme ? settingsIconDarkTheme : settingsIconLightTheme;
+    document.body.classList.toggle('dark-theme');
 }
 
 export function updateSoundSettingsUI() {

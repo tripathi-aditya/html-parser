@@ -35,30 +35,15 @@
     --contrast-secondary: #2d2348;
 }
 
-/* .light-theme {
-    --background: #f4f4f6;
-    --background-highlight: #f4f4f6;
-    --content-highlight: #9999a1;
-    --font-color-primary: #201934;
-    --font-color-secondary: #9999A1;
-    --contrast-primary: #8c62ff;
-    --contrast-secondary: #cab6ff;
-
-} */
-
 :root {
-    font-size: var(--font-size-sm);
     font-family: "Jersey 15", sans-serif;
-    font-weight: 400;
 }
-
-
 
 body {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    font-size: 16px;
+    font-size: var(--font-size-sm);
     height: 100vh; 
     margin: 0;
     padding: 0;
@@ -69,14 +54,15 @@ body {
 }
 
 
-p {
+/* change default margins */
+h1, h2, h3, h4, h5, h6, p {
     margin: 0.2rem;
 }
 
 
 /* Large phones, small tablets */
 @media only screen and (min-width: 570px) {
-    :root {
+    body {
         font-size: var(--font-size-md);
     }
 }
@@ -84,14 +70,14 @@ p {
 
 /* Medium devices, land scape tablets */
 @media only screen and (min-width: 768px) {
-    :root {
+    body {
         font-size: var(--font-size-md);
     }
 }
 
 /* Large and X-Large devices */
 @media only screen and (min-width: 992px) {
-    :root {
+    body {
         font-size: var(--font-size-lg);
     }
 }

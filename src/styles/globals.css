@@ -15,6 +15,9 @@
     --font-size-sm: 16px;
     --font-size-md: 20px;
     --font-size-lg: 24px;
+    --font-board-sm: 70px;
+    --font-board-md: 90px;
+    --font-board-lg: 120px;
 
     --background: #f4f4f6;
     --background-highlight: #f4f4f6;

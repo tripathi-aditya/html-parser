@@ -37,7 +37,7 @@ footer {
         align-items: center;
         border: 0.4rem solid;
         border-color: var(--contrast-secondary);
-        font-size: 3rem;
+        font-size: var(--font-board-sm);
     }
 
     .cell_0 {
@@ -186,8 +186,11 @@ footer {
 /* Large phones, small tablets */
 @media only screen and (min-width: 570px) {
     .board {
-        width: 50vw;
-        height: 50vw;
+        width: 60vw;
+        height: 60vw;
+        .cell{
+            font-size: var(--font-board-md);
+        }
     }
 }
 
@@ -196,8 +199,8 @@ footer {
 /* Medium devices, land scape tablets, large phones */
 @media only screen and (min-width: 768px) {
     .board {
-        width: 40vw;
-        height: 40vw;
+        width: 50vw;
+        height: 50vw;
     }
 }
 
@@ -210,5 +213,8 @@ footer {
     .board {
         width: 50vh;
         height: 50vh;
+        .cell{
+            font-size: var(--font-board-lg);
+        }
     }
 }

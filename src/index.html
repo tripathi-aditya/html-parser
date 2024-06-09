@@ -4,6 +4,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+    <link rel="prefetch" href="../public/assets/sounds/play-turn-x.wav" as="audio"/>
+    <link rel="prefetch" href="../public/assets/sounds/play-turn-o.wav" as="audio"/>
+    <link rel="prefetch" href="../public/assets/sounds/game-over.wav" as="audio"/>
+
     
     <link rel="stylesheet" href="./styles/index.css" />
     <script src="./scripts/index.js" type="module"></script>
@@ -13,7 +17,7 @@
 </head>
 <body class="layout">
     <div class="logo">
-            <p>at</p>
+            <p>adt</p>
     </div>
     <section id="settings" class="settings">
             <button id="toggle-sound" class="setting-toggle">
@@ -71,8 +75,19 @@
                 </span>
         </section>
     </main>
+    <div>
+        <audio id="play-X">
+            <source src="../public/assets/sounds/play-turn-x.wav" type="audio/mpeg">
+        </audio>
+        <audio id="play-O">
+            <source src="../public/assets/sounds/play-turn-o.wav" type="audio/mpeg">
+        </audio>
+        <audio id="play-game-over">
+            <source src="../public/assets/sounds/game-over.wav" type="audio/mpeg">
+        </audio>
+    </div>
     <footer>
-        copyright
+        adt &#169; 2024
     </footer>
 </body>
 </html>

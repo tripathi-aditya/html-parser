@@ -1,8 +1,10 @@
 
 import { loadIconAssets } from "./assetLoad";
 import { resetGame, renderBoardState, highlightCurrentPlayer, updateSoundSettingsUI, updateThemeSettingUI, setGameResultMessage, updateGameScoresUI, resetBoard, updateSettingIcons} from "./mutators";
+import { playGameOverAudio, playTurnAudio } from "./utils";
 
 export function onGameEnd(){
+    playGameOverAudio();
     updateGameScoresUI(false);
     setGameResultMessage(false);
     resetGame(); 
@@ -10,6 +12,7 @@ export function onGameEnd(){
 }
 
 export function onGameDraw() {
+    playGameOverAudio();
     updateGameScoresUI(true);
     setGameResultMessage(true);
     resetGame();
@@ -27,6 +30,7 @@ export function onGameReset() {
 }
 
 export function onPlayTurn() {
+    playTurnAudio();
     renderBoardState();
 }
 

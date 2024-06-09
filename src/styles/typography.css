@@ -1,24 +1,33 @@
-
-body {
-    font-family: "Jersey 15", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+/* change default margins */
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0.2rem;
 }
-
 
 .heading {
     font-size: 2rem;
 }
 
-.sub-heading {
-    font-size: 1.6rem;
+/* Large phones, small tablets */
+@media only screen and (min-width: 570px) {
+
+    .heading {
+        font-size: 2.2rem;
+    }
+
 }
 
-.text {
-    font-size: 1.2rem;
+/* Medium devices, land scape tablets, large phones */
+@media only screen and (min-width: 768px) {
+    .heading {
+        font-size: 2.5rem;
+    }
+
 }
 
-.sub-text{
-    font-size: 1rem;
-    font-weight: 400;
+/* Large and X-Large devices */
+@media only screen and (min-width: 992px) {
+    .heading {
+        font-size: 3rem;
+    }
+
 }

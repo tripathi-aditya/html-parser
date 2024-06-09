@@ -53,7 +53,26 @@ export function toggleSound(){
     
  }
 
-
- export function loadRenderAssets() {
+export function loadRenderAssets() {
     window.ticTacToe.dispatchAppEvent("LOAD_RENDER_ASSETS")
- }
+}
+
+export function playTurnAudio(){
+    const {isSound, currentPlayer} = window.ticTacToe.appState;
+    if(!isSound){
+        return;
+    }
+    const audioElement = document.getElementById(`play-${currentPlayer}`);
+    audioElement.play()
+}
+
+
+export function playGameOverAudio() {
+    const {isSound} = window.ticTacToe.appState;
+    if(!isSound){
+        return;
+    }
+    const audioElement = document.getElementById('play-game-over');
+    audioElement.play();
+
+}

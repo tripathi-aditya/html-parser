@@ -4,6 +4,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+    <link rel="prefetch" href="../public/assets/sounds/play-turn-x.wav" as="audio"/>
+    <link rel="prefetch" href="../public/assets/sounds/play-turn-o.wav" as="audio"/>
+    <link rel="prefetch" href="../public/assets/sounds/game-over.wav" as="audio"/>
+
     
     <link rel="stylesheet" href="./styles/index.css" />
     <script src="./scripts/index.js" type="module"></script>
@@ -11,26 +15,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
 </head>
-<body >
-    <aside class="logo-settings-wrapper">
-    <header class="logo">
-        <span class="heading">at</span>
-    </header>
+<body class="layout">
+    <div class="logo">
+            <p>adt</p>
+    </div>
     <section id="settings" class="settings">
-        <button id="toggle-sound" class="setting-toggle">
-            <span>SOUND</span>
-            <img class="setting-icon" id="setting-icon-sound" src="#" />
-        </button>
-        <button id="toggle-theme" class="setting-toggle">
-            <span>THEME</span>
-            <img class="setting-icon" id="setting-icon-theme" src="#" />
-        </button>
+            <button id="toggle-sound" class="setting-toggle">
+                <span>SOUND</span>
+                <img class="setting-icon" id="setting-icon-sound" src="#" />
+            </button>
+            <button id="toggle-theme" class="setting-toggle">
+                <span>THEME</span>
+                <img class="setting-icon" id="setting-icon-theme" src="#" />
+            </button>
     </section>
-</aside>
     <main>
         <div id="board" class="board">
                 <div data-cell-id="0" class="cell cell_0">
-                
+
                 </div>
                 <div data-cell-id="1" class="cell cell_1">
                     
@@ -57,24 +59,35 @@
                     
                 </div>
         </div>
-        <p data-message="board-status" class="sub-text board-message"> </p>
+        <p data-message="board-status" class="board-message"> </p>
         <section id="score-board" class="scores-and-turn">   
                 <span data-toggle-turn class="scores current-turn">
-                    <p class="heading">Player(X)</P>
+                    <p>Player(X)</P>
                     <p data-result="score-X">0</p>
                 </span>
                 <span class="scores">
-                    <p class="heading">Draw</p>
+                    <p>Draw</p>
                     <p data-result="score-draw">0</p>
                 </span>
                 <span data-toggle-turn class="scores">
-                    <p class="heading"> Player(O)</p>
+                    <p> Player(O)</p>
                     <p data-result="score-O">0</p>
                 </span>
         </section>
     </main>
+    <div>
+        <audio id="play-X">
+            <source src="../public/assets/sounds/play-turn-x.wav" type="audio/mpeg">
+        </audio>
+        <audio id="play-O">
+            <source src="../public/assets/sounds/play-turn-o.wav" type="audio/mpeg">
+        </audio>
+        <audio id="play-game-over">
+            <source src="../public/assets/sounds/game-over.wav" type="audio/mpeg">
+        </audio>
+    </div>
     <footer>
-        copyright
+        adt &#169; 2024
     </footer>
 </body>
 </html>

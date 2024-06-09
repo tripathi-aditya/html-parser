@@ -12,9 +12,10 @@
     --margin-md: 2rem;
     --margin-lg: 4rem;
 
-    --font-size-sm: 16px;
-    --font-size-md: 20px;
-    --font-size-lg: 24px;
+    --font-size-sm: 20px;
+    --font-size-md: 24px;
+    --font-size-lg: 32px;
+
     --font-board-sm: 70px;
     --font-board-md: 90px;
     --font-board-lg: 120px;
@@ -40,27 +41,35 @@
 
 :root {
     font-family: "Jersey 15", sans-serif;
+    box-sizing: border-box;
+
 }
 
 body {
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    font-size: var(--font-size-sm);
-    height: 100vh; 
+    font-size: var(--font-size-xs);
     margin: 0;
     padding: 0;
-    width: 100vw;
     transition: all 0.3s ease-in-out;
     background-color: var(--background);
     color: var(--font-color-primary);
+    width: 100vw;
+    height: 100vh;
+}
+
+main {
+    margin-top: auto;
 }
 
 
-/* change default margins */
-h1, h2, h3, h4, h5, h6, p {
-    margin: 0.2rem;
+@media only screen and (min-width: 370px) {
+    body {
+        font-size: var(--font-size-sm);
+    }
 }
+
+
 
 
 /* Large phones, small tablets */

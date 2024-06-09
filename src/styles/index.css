@@ -2,33 +2,85 @@
 @import url("typography.css");
 
 
-main {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+.layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(50px, 10vh) minmax(100px, 10vh) auto 1fr;
+
+    .logo {
+        grid-column: 1/1;
+        grid-row: 1/2;
+    }
+
+    .settings {
+        grid-column: 1/1;
+        grid-row: 2/3;
+    }
+
+    main {
+        grid-column: 1/1;
+        grid-row: 3/4;
+    }
+
+    footer {
+        grid-column: 1/1;
+        grid-row: 4/5;
+    }
 }
 
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: auto;
-    padding: var(--padding-sm);
-}
+    .logo {
+        display: flex;
+        justify-content: center;
+        padding: var(--padding-sm);
+        margin-top: 0;
+    }
+    
+    .settings {
+        display: flex;
+        justify-content: space-evenly;
+        padding:var(--padding-xs) 0 var(--padding-sm) 0;
+    }
+    
+    .setting-toggle {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 0.25rem;
+        padding:  var(--padding-xs);
+        min-width: 3rem;
+        width: fit-content;
+        height: fit-content;
+        background-color: var(--contrast-primary);
+        font-family: inherit;
+        transition: all 0.1s ease-in;
+        box-shadow: 0.2rem 0.1rem  var(--font-color-primary);
+        margin: 0 0 var(--margin-sm) 0;
+    
+        &:hover{
+            cursor: pointer;
+            background-color: var(--contrast-secondary);
+            color: var(--font-color-primary);
+            box-shadow:none;
+        }
+    
+        .setting-icon {
+            width: 1rem;
+            height: 1rem;
+            margin: 0 0 0 var(--margin-xs);
+        }
+    }
 
 
 .board {
     display: grid;
-    margin: 0 auto;
+    margin: auto;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
-    width: 80vw;
-    height: 80vw;
+    /* width: 80vw;
+    height: 80vw; */
+    width: 300px;
+    height: 300px;
     transition: all 0.3s ease-in-out;
-    
-
    
     .cell {
         cursor: pointer;
@@ -103,118 +155,128 @@ footer {
     }
 }
 
-
-.logo {
-    display: flex;
-    justify-content: center;
-    padding: var(--padding-sm);
-    margin-top: 0;
+.board-message {
+    text-align: center;
+    padding: var(--margin-sm);
+    margin: auto;
+    color: var(--contrast-primary);
+    /* stop jumping */
+    min-height: 2rem;  
 }
-
-.settings {
-    display: flex;
-    justify-content: space-evenly;
-    padding: var(--padding-md);
-}
-
-.setting-toggle {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 0.25rem;
-    padding:  var(--padding-xs);
-    min-width: 3rem;
-    width: fit-content;
-    background-color: var(--contrast-primary);
-    font-family: inherit;
-    transition: all 0.1s ease-in;
-    font-size: inherit;
-    box-shadow: 0.2rem 0.1rem  var(--font-color-primary);
-    margin: var(--margin-sm);
-
-    &:hover{
-        cursor: pointer;
-        background-color: var(--contrast-secondary);
-        color: var(--font-color-primary);
-        box-shadow:none;
-    }
-
-    .setting-icon {
-        width: 15px;
-        height: 15px;
-        margin: 0 0 0 var(--margin-xs);
-    }
-}
-
 
 .scores-and-turn{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding: var(--padding-sm);
-    font-size: 2rem;
+    padding: var(--padding-xs);
+    font-size: var(--font-size-md);
     color: var(--font-color-secondary);
     margin: auto;
+    width: fit-content;
+
+    .scores {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 var(--padding-xs);
+    }
+    .current-turn {
+        color: var(--contrast-primary);
+    }
 }
 
-.scores {
+footer {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 0 var(--padding-sm);
-  
+    margin-top: auto;
+    padding: var(--padding-sm);
 }
 
 
-.current-turn {
-    color: var(--contrast-primary);
+@media only screen and (min-width: 370px){
+    .board {
+        width: 350px;
+        height: 350px;
+    }
+    .scores-and-turn{
+        font-size: var(--font-size-lg);
+    }
 }
-
-
-.board-message {
-    padding: var(--margin-md);
-    margin: auto;
-    color: var(--contrast-primary);
-    /* stop jumping */
-    min-height: 1rem;  
-}
-
-
 
 /* Large phones, small tablets */
 @media only screen and (min-width: 570px) {
     .board {
-        width: 60vw;
-        height: 60vw;
         .cell{
             font-size: var(--font-board-md);
         }
     }
+    .setting-toggle {
+        font-size: var(--font-size-md);
+    }
+    
 }
-
-
 
 /* Medium devices, land scape tablets, large phones */
 @media only screen and (min-width: 768px) {
-    .board {
-        width: 50vw;
-        height: 50vw;
-    }
+ 
 }
 
 /* Large and X-Large devices */
 @media only screen and (min-width: 992px) {
-    .logo-settings-wrapper{
-        display: flex;
-        justify-content: space-between;
+    .layout {
+        display: grid;
+        grid-template-columns: 1fr minmax(6fr, auto) 1fr;
+        grid-template-rows: 1fr auto 1fr;
+
+        .logo {
+            grid-column: 1/2;
+            grid-row: 1/2;
+            margin: 0 auto 0 var(--margin-sm);
+        }
+
+        .settings{
+            grid-column: 3/4;
+            grid-row: 1/2;
+            padding:var(--padding-sm);
+            display: flex;
+            justify-content: space-around;
+            width: fit-content;
+            .setting-toggle{
+                margin-left: var(--margin-md);
+            }
+        }
+    
+        main {
+            grid-column: 1/5;
+            grid-row: 2/3;
+        }
+    
+        footer {
+            grid-column: 1/4;
+            grid-row: 3/4;
+        }
+
     }
+
     .board {
-        width: 50vh;
-        height: 50vh;
+        width: 500px;
+        height: 500px;
         .cell{
             font-size: var(--font-board-lg);
         }
+    }
+
+    .logo-settings-wrapper {
+        .setting-toggle {
+            font-size: var(--font-size-lg);
+        }
+    }
+
+    .scores-and-turn {
+        padding: var(--padding-lg);
+        font-size: var(--font-size-lg);
     }
 }

@@ -35,8 +35,8 @@
     --content-highlight: #3f3f3f;
     --font-color-primary: #ffffff;
     --font-color-secondary: #828282;
-    --contrast-primary: #a688fa;
-    --contrast-secondary: #2d2348;
+    --contrast-primary: #a789fb;
+    --contrast-secondary: #a043fd;
 }
 
 :root {
@@ -60,6 +60,10 @@ body {
 
 main {
     margin-top: auto;
+}
+
+audio {
+    display: none;
 }
 
 

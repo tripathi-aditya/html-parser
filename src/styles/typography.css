@@ -3,31 +3,3 @@ h1, h2, h3, h4, h5, h6, p {
     margin: 0.2rem;
 }
 
-.heading {
-    font-size: 2rem;
-}
-
-/* Large phones, small tablets */
-@media only screen and (min-width: 570px) {
-
-    .heading {
-        font-size: 2.2rem;
-    }
-
-}
-
-/* Medium devices, land scape tablets, large phones */
-@media only screen and (min-width: 768px) {
-    .heading {
-        font-size: 2.5rem;
-    }
-
-}
-
-/* Large and X-Large devices */
-@media only screen and (min-width: 992px) {
-    .heading {
-        font-size: 3rem;
-    }
-
-}
